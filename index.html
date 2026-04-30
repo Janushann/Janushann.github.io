@@ -75,10 +75,29 @@ nav {
   display: flex; align-items: center; gap: .5rem;
 }
 .nav-logo-dot {
-  width: 7px; height: 7px; border-radius: 50%; background: var(--green);
-  animation: breathe 2.4s ease-in-out infinite;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #22c55e; position: relative; flex-shrink: 0;
+  box-shadow: 0 0 0 2px rgba(34,197,94,.12), 0 0 10px rgba(34,197,94,.45);
+  animation: livePulse 1.8s ease-in-out infinite;
 }
+.nav-logo-dot::before {
+  content: ''; position: absolute; inset: -5px; border-radius: inherit;
+  border: 1px solid rgba(34,197,94,.35);
+  animation: liveRing 1.8s ease-out infinite;
+}
+.nav-logo-dot::after {
+  content: 'En ligne'; position: absolute; left: 50%; top: calc(100% + 9px);
+  transform: translateX(-50%) translateY(-3px);
+  padding: .22rem .5rem; border-radius: 6px;
+  background: var(--text); color: var(--bg); font-size: .66rem; font-weight: 500;
+  line-height: 1; white-space: nowrap; pointer-events: none;
+  opacity: 0; transition: opacity var(--t), transform var(--t);
+  box-shadow: var(--shadow-sm);
+}
+.nav-logo-dot:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
 @keyframes breathe { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.72;transform:scale(.86)} }
+@keyframes liveRing { 0%{opacity:.55;transform:scale(.65)} 100%{opacity:0;transform:scale(1.45)} }
 .nav-links { display: flex; align-items: center; gap: 1.75rem; }
 .nav-links a {
   font-size: .8rem; font-weight: 500; color: var(--text-2);
@@ -168,16 +187,16 @@ nav {
   opacity: 0; animation: fu .6s .55s forwards;
 }
 .h-photo-wrap {
-  width: 200px; height: 200px; border-radius: 50%; position: relative;
+  width: clamp(180px, 22vw, 240px); aspect-ratio: 1 / 1; border-radius: 14px; position: relative;
   box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border2), var(--shadow-md);
 }
 .h-photo-inner {
-  width: 100%; height: 100%; border-radius: 50%;
+  width: 100%; height: 100%; border-radius: inherit;
   background: var(--bg3); overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   font-size: 4.5rem;
 }
-.h-photo-inner img { width: 100%; height: 100%; object-fit: cover; }
+.h-photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
 .h-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; width: 100%; }
 .kpi {
   background: var(--bg2); border: 1px solid var(--border);
@@ -416,6 +435,7 @@ footer {
   nav { padding: 0 1.25rem; }
   .nav-links { display: none; }
   #hero, .telecom-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; padding-left: 1.25rem; padding-right: 1.25rem; }
+  .h-photo-wrap { width: min(70vw, 220px); }
   .section-i { padding: 3.5rem 1.25rem; }
   .about-grid { grid-template-columns: 1fr; }
   .xp-row, .edu-row { grid-template-columns: 1fr; gap: .5rem; }
@@ -429,7 +449,7 @@ footer {
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <div class="nav-logo-dot"></div>
+    <span class="nav-logo-dot" title="En ligne" aria-label="En ligne"></span>
     Janushann Thamilalakan
   </div>
   <ul class="nav-links">
@@ -480,8 +500,7 @@ footer {
     <div class="h-right">
       <div class="h-photo-wrap">
         <div class="h-photo-inner">
-          <!-- Remplacer par <img src="photo.jpg" alt="Janushann"> -->
-          👤
+          <img src="image.png" alt="Portrait de Janushann Thamilalakan" width="800" height="800" decoding="async">
         </div>
       </div>
       <div class="h-kpis">
