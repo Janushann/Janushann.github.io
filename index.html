@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Janushann Thamilalakan — Ingénierie Réseaux, Cyber, Télécom &amp; IA</title>
+<title>Janushann Thamilalakan — Ingénieur Électronique & Systèmes Communicants (ESIEE Paris)</title>
+<meta name="description" content="Admis à ESIEE Paris (Électronique & Informatique — Systèmes Communicants). Recherche alternance ingénieur 3 ans dès septembre 2026. Télécoms, RF, électronique, réseaux, cybersécurité.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-
-/* ─── TOKENS ─── */
 :root {
   --bg:          #f7f5f2;
   --bg2:         #ffffff;
@@ -20,7 +19,6 @@
   --text-2:      #5a5248;
   --text-3:      #9a9088;
 
-  /* Pastel accents */
   --green:       #2d7a56;
   --green-bg:    #eaf4ee;
   --green-border:#b8ddc8;
@@ -48,888 +46,877 @@
   --r: 10px;
   --t: .18s ease;
 }
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:var(--f); background:var(--bg); color:var(--text);
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+}
+/* ---- i18n : on cache la langue inactive ---- */
+body[data-lang="fr"] .en { display:none !important; }
+body[data-lang="en"] .fr { display:none !important; }
 
-/* ─── RESET ─── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--text); font-family: var(--f); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-a { color: inherit; text-decoration: none; }
-ul { list-style: none; }
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; display:block; }
+.wrap { max-width:1080px; margin:0 auto; padding:0 1.4rem; }
 
-/* ─── SCROLLBAR ─── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg3); }
-::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 2px; }
+/* ================= TOPBAR ================= */
+.topbar {
+  position:sticky; top:0; z-index:50;
+  background:rgba(247,245,242,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+}
+.topbar-in {
+  max-width:1080px; margin:0 auto; padding:.7rem 1.4rem;
+  display:flex; align-items:center; gap:1rem;
+}
+.brand { font-weight:700; font-size:.95rem; letter-spacing:-.01em; }
+.nav { display:flex; gap:.2rem; margin-left:auto; flex-wrap:wrap; }
+.nav a {
+  font-size:.8rem; color:var(--text-2); padding:.35rem .6rem;
+  border-radius:7px; transition:var(--t);
+}
+.nav a:hover { background:var(--bg3); color:var(--text); }
+.lang-btn {
+  font-family:var(--f); font-size:.74rem; font-weight:600; cursor:pointer;
+  border:1px solid var(--border2); background:var(--bg2); color:var(--text-2);
+  border-radius:99px; padding:.32rem .75rem; transition:var(--t);
+  display:flex; gap:.35rem; align-items:center;
+}
+.lang-btn:hover { border-color:var(--blue-border); color:var(--blue); background:var(--blue-bg); }
+.lang-btn b { color:var(--text); }
+.btn-contact {
+  font-size:.8rem; font-weight:600; background:var(--text); color:#fff;
+  padding:.42rem .9rem; border-radius:8px; transition:var(--t);
+}
+.btn-contact:hover { opacity:.85; }
 
-/* ─── NAV ─── */
-nav {
-  position: fixed; inset: 0 0 auto; z-index: 100;
-  height: 58px; display: flex; align-items: center; justify-content: space-between;
-  padding: 0 2.5rem;
-  background: rgba(247,245,242,.92);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+/* ================= HERO ================= */
+.hero { padding:3.4rem 0 2.6rem; }
+.hero-grid {
+  display:grid; grid-template-columns:1.35fr .85fr; gap:2.5rem; align-items:center;
 }
-.nav-logo {
-  font-size: .8rem; font-weight: 600; letter-spacing: -.01em; color: var(--text);
-  display: flex; align-items: center; gap: .5rem;
+.h-pills { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:1.1rem; }
+.pill {
+  font-size:.72rem; font-weight:600; padding:.3rem .75rem; border-radius:99px;
+  border:1px solid var(--border2); background:var(--bg2); color:var(--text-2);
+  display:inline-flex; align-items:center; gap:.4rem;
 }
-.nav-logo-dot {
-  width: 9px; height: 9px; border-radius: 50%;
-  background: #22c55e; position: relative; flex-shrink: 0;
-  box-shadow: 0 0 0 2px rgba(34,197,94,.12), 0 0 10px rgba(34,197,94,.45);
-  animation: livePulse 1.8s ease-in-out infinite;
-}
-.nav-logo-dot::before {
-  content: ''; position: absolute; inset: -5px; border-radius: inherit;
-  border: 1px solid rgba(34,197,94,.35);
-  animation: liveRing 1.8s ease-out infinite;
-}
-.nav-logo-dot::after {
-  content: 'En ligne'; position: absolute; left: 50%; top: calc(100% + 9px);
-  transform: translateX(-50%) translateY(-3px);
-  padding: .22rem .5rem; border-radius: 6px;
-  background: var(--text); color: var(--bg); font-size: .66rem; font-weight: 500;
-  line-height: 1; white-space: nowrap; pointer-events: none;
-  opacity: 0; transition: opacity var(--t), transform var(--t);
-  box-shadow: var(--shadow-sm);
-}
-.nav-logo-dot:hover::after { opacity: 1; transform: translateX(-50%) translateY(0); }
-@keyframes breathe { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
-@keyframes livePulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.72;transform:scale(.86)} }
-@keyframes liveRing { 0%{opacity:.55;transform:scale(.65)} 100%{opacity:0;transform:scale(1.45)} }
-.nav-links { display: flex; align-items: center; gap: 1.75rem; }
-.nav-links a {
-  font-size: .8rem; font-weight: 500; color: var(--text-2);
-  transition: color var(--t);
-}
-.nav-links a:hover { color: var(--text); }
-.nav-cta {
-  font-size: .78rem; font-weight: 500;
-  padding: .42rem 1.1rem; border-radius: 8px;
-  background: var(--text); color: var(--bg);
-  transition: opacity var(--t), transform var(--t);
-}
-.nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+.pill.esiee { background:var(--gold-bg); border-color:var(--gold-border); color:var(--gold); }
+.pill.dispo { background:var(--green-bg); border-color:var(--green-border); color:var(--green); }
+.pill .dot { width:7px; height:7px; border-radius:50%; background:var(--green); animation:pulse 1.8s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
 
-/* ─── HERO ─── */
-#hero {
-  min-height: 100vh;
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; gap: 5rem;
-  max-width: 1140px; margin: 0 auto;
-  padding: 90px 2.5rem 3rem;
-}
-.h-overline {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-size: .72rem; font-weight: 500; color: var(--green);
-  letter-spacing: .05em; margin-bottom: 1.25rem;
-  opacity: 0; animation: fu .5s .1s forwards;
-}
-.h-overline-pill {
-  background: var(--green-bg); border: 1px solid var(--green-border);
-  color: var(--green); font-size: .68rem; padding: .2rem .6rem; border-radius: 100px;
-}
 .h-name {
-  font-size: clamp(2.2rem, 4.5vw, 3.8rem); font-weight: 700; line-height: 1.1;
-  letter-spacing: -.03em; color: var(--text); margin-bottom: .75rem;
-  opacity: 0; animation: fu .5s .2s forwards;
+  font-size:clamp(2.1rem, 5vw, 3.1rem); font-weight:800; letter-spacing:-.03em;
+  line-height:1.08; margin-bottom:1rem;
 }
-.h-name span { color: var(--text-2); font-weight: 300; display: block; }
-
-.h-domains {
-  display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem;
-  opacity: 0; animation: fu .5s .3s forwards;
+.h-role {
+  font-size:1.02rem; font-weight:600; color:var(--blue); margin-bottom:1rem;
 }
+.h-domains { display:flex; gap:.45rem; flex-wrap:wrap; margin-bottom:1.2rem; }
 .domain-tag {
-  display: inline-flex; align-items: center; gap: .35rem;
-  font-size: .73rem; font-weight: 500; padding: .3rem .7rem; border-radius: 100px; border: 1px solid;
+  font-size:.76rem; font-weight:600; padding:.32rem .7rem;
+  border-radius:8px; border:1px solid;
 }
-.dt-green  { background: var(--green-bg);  border-color: var(--green-border);  color: var(--green); }
-.dt-blue   { background: var(--blue-bg);   border-color: var(--blue-border);   color: var(--blue); }
-.dt-purple { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
-.dt-gold   { background: var(--gold-bg);   border-color: var(--gold-border);   color: var(--gold); }
-
+.dt-green  { background:var(--green-bg);  border-color:var(--green-border);  color:var(--green); }
+.dt-blue   { background:var(--blue-bg);   border-color:var(--blue-border);   color:var(--blue); }
+.dt-purple { background:var(--purple-bg); border-color:var(--purple-border); color:var(--purple); }
+.dt-gold   { background:var(--gold-bg);   border-color:var(--gold-border);   color:var(--gold); }
+.dt-red    { background:var(--red-bg);    border-color:var(--red-border);    color:var(--red); }
 .h-desc {
-  font-size: 1rem; line-height: 1.75; color: var(--text-2); max-width: 520px;
-  margin-bottom: .85rem;
-  opacity: 0; animation: fu .5s .4s forwards;
+  font-size:.97rem; line-height:1.75; color:var(--text-2); max-width:540px; margin-bottom:.9rem;
 }
-.h-lab-note {
-  font-size: .82rem; line-height: 1.65; color: var(--text-2); max-width: 520px;
-  padding: .75rem .95rem; margin-bottom: 1.8rem;
-  background: var(--bg2); border: 1px solid var(--border); border-left: 3px solid var(--green);
-  border-radius: var(--r); box-shadow: var(--shadow-sm);
-  opacity: 0; animation: fu .5s .48s forwards;
+.h-note {
+  font-size:.82rem; line-height:1.65; color:var(--text-3); max-width:540px; margin-bottom:1.4rem;
 }
-.h-actions {
-  display: flex; gap: .65rem; flex-wrap: wrap;
-  opacity: 0; animation: fu .5s .58s forwards;
-}
+.h-actions { display:flex; gap:.6rem; flex-wrap:wrap; }
 .btn-solid {
-  font-size: .8rem; font-weight: 500; padding: .6rem 1.4rem; border-radius: 8px;
-  background: var(--text); color: var(--bg);
-  display: inline-flex; align-items: center; gap: .45rem;
-  transition: opacity var(--t), transform var(--t);
+  background:var(--text); color:#fff; font-size:.85rem; font-weight:600;
+  padding:.6rem 1.15rem; border-radius:9px; transition:var(--t);
 }
-.btn-solid:hover { opacity: .82; transform: translateY(-1px); }
+.btn-solid:hover { opacity:.85; transform:translateY(-1px); }
 .btn-ghost {
-  font-size: .8rem; font-weight: 500; padding: .6rem 1.4rem; border-radius: 8px;
-  border: 1px solid var(--border2); color: var(--text-2);
-  display: inline-flex; align-items: center; gap: .45rem;
-  transition: border-color var(--t), color var(--t), transform var(--t);
+  background:var(--bg2); border:1px solid var(--border2); color:var(--text);
+  font-size:.85rem; font-weight:600; padding:.6rem 1.15rem; border-radius:9px; transition:var(--t);
 }
-.btn-ghost:hover { border-color: var(--text-2); color: var(--text); transform: translateY(-1px); }
+.btn-ghost:hover { border-color:var(--text-3); transform:translateY(-1px); }
 
-/* Hero right */
-.h-right {
-  display: flex; flex-direction: column; align-items: center; gap: 1.5rem;
-  opacity: 0; animation: fu .6s .55s forwards;
-}
-.h-photo-wrap {
-  width: clamp(180px, 22vw, 240px); aspect-ratio: 1 / 1; border-radius: 14px; position: relative;
-  box-shadow: 0 0 0 4px var(--bg), 0 0 0 5px var(--border2), var(--shadow-md);
-}
+.h-photo-wrap { display:flex; justify-content:center; }
 .h-photo-inner {
-  width: 100%; height: 100%; border-radius: inherit;
-  background: var(--bg3); overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 4.5rem;
+  width:min(290px, 70vw); aspect-ratio:1; border-radius:24px; overflow:hidden;
+  border:1px solid var(--border2); box-shadow:var(--shadow-md);
+  background:var(--bg3);
 }
-.h-photo-inner img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-.h-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; width: 100%; }
-.kpi {
-  background: var(--bg2); border: 1px solid var(--border);
-  border-radius: var(--r); padding: .9rem 1rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--t), transform var(--t);
-}
-.kpi:hover { box-shadow: var(--shadow-md); transform: translateY(-1px); }
-.kpi-val { font-size: 1.5rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
-.kpi-lbl { font-size: .68rem; color: var(--text-3); margin-top: .18rem; }
-.kv-green  { color: var(--green); }
-.kv-blue   { color: var(--blue); }
-.kv-purple { color: var(--purple); }
-.kv-gold   { color: var(--gold); }
+.h-photo-inner img { width:100%; height:100%; object-fit:cover; }
 
-/* ─── STATUS BAR ─── */
-.status-strip {
-  background: var(--green-bg); border-top: 1px solid var(--green-border);
-  border-bottom: 1px solid var(--green-border);
-  display: flex; align-items: center; justify-content: center; gap: .55rem;
-  padding: .6rem; position: sticky; top: 58px; z-index: 50;
+/* ---- chaîne système communicant (signature) ---- */
+.chain {
+  margin-top:2.6rem; padding:1.1rem 1.2rem; background:var(--bg2);
+  border:1px solid var(--border); border-radius:var(--r); box-shadow:var(--shadow-sm);
 }
-.s-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: breathe 2s infinite; }
-.s-text { font-size: .73rem; font-weight: 500; color: var(--green); }
+.chain-title {
+  font-size:.7rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--text-3); margin-bottom:.7rem;
+}
+.chain-flow { display:flex; align-items:center; gap:.45rem; flex-wrap:wrap; }
+.chain-step {
+  font-size:.76rem; font-weight:600; padding:.38rem .7rem; border-radius:8px; border:1px solid;
+  white-space:nowrap;
+}
+.chain-arrow { color:var(--text-3); font-size:.8rem; }
 
-/* ─── SHARED SECTION ─── */
-.section-w { position: relative; }
-.section-i { max-width: 1140px; margin: 0 auto; padding: 5rem 2.5rem; }
-.section-h { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
-.section-num { font-size: .68rem; font-weight: 600; color: var(--text-3); letter-spacing: .12em; }
-.section-title { font-size: 1.6rem; font-weight: 700; letter-spacing: -.025em; }
-.section-rule { flex: 1; height: 1px; background: var(--border); }
+/* ================= SECTIONS ================= */
+section { padding:3.2rem 0; border-top:1px solid var(--border); }
+.sec-head { display:flex; align-items:baseline; gap:1rem; margin-bottom:.5rem; }
+.sec-num {
+  font-size:.78rem; font-weight:700; color:var(--text-3); letter-spacing:.08em;
+}
+.sec-eyebrow {
+  font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--blue); margin-bottom:.4rem;
+}
+.sec-title {
+  font-size:clamp(1.5rem, 3.4vw, 2.05rem); font-weight:800; letter-spacing:-.02em;
+  line-height:1.15; margin-bottom:.9rem;
+}
+.sec-title em { font-style:italic; color:var(--blue); }
+.sec-desc { font-size:.93rem; color:var(--text-2); max-width:640px; line-height:1.75; margin-bottom:1.6rem; }
 
-/* ─── TELECOM SECTION ─── */
-.telecom-section { background: var(--bg2); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.telecom-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-.telecom-eyebrow {
-  display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .7rem; font-weight: 600; color: var(--green);
-  letter-spacing: .07em; text-transform: uppercase;
-  margin-bottom: .85rem;
-}
-.telecom-eyebrow::before { content: ''; width: 16px; height: 1.5px; background: var(--green); }
-.telecom-left h2 { font-size: 1.65rem; font-weight: 700; letter-spacing: -.025em; line-height: 1.25; margin-bottom: 1rem; }
-.telecom-left h2 em { font-style: normal; color: var(--green); }
-.telecom-left p { font-size: .9rem; line-height: 1.8; color: var(--text-2); margin-bottom: 1.35rem; }
-.tag-cloud { display: flex; flex-wrap: wrap; gap: .38rem; }
-.tc-tag {
-  font-size: .7rem; font-weight: 500; padding: .26rem .62rem; border-radius: 6px;
-  background: var(--green-bg); border: 1px solid var(--green-border); color: var(--green);
-  transition: background var(--t);
-}
-.tc-tag:hover { background: #d4eddf; }
-
-.telecom-cards { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
-.tc-card {
-  background: var(--bg); border: 1px solid var(--border); border-radius: var(--r);
-  padding: 1.1rem 1.15rem; box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--t), transform var(--t), border-color var(--t);
-}
-.tc-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--green-border); }
-.tc-card-ico { font-size: 1.4rem; margin-bottom: .5rem; }
-.tc-card-title { font-size: .83rem; font-weight: 600; margin-bottom: .3rem; }
-.tc-card-desc { font-size: .76rem; color: var(--text-2); line-height: 1.55; }
-
-/* ─── SKILLS ─── */
-.skills-section { background: var(--bg); border-top: 1px solid var(--border); }
-.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .85rem; }
-.skill-card {
-  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
-  padding: 1.4rem; box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--t), transform var(--t);
-  position: relative; overflow: hidden;
-}
-.skill-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2.5px;
-  transform: scaleX(0); transform-origin: left; transition: transform .28s ease;
-}
-.skill-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.skill-card:hover::before { transform: scaleX(1); }
-.sc-tel::before   { background: linear-gradient(90deg, var(--green), #6ac99a); }
-.sc-cyber::before { background: linear-gradient(90deg, var(--purple), #9b7fd4); }
-.sc-net::before   { background: linear-gradient(90deg, var(--blue), #6a9fd4); }
-.sc-sys::before   { background: linear-gradient(90deg, var(--red), #d48080); }
-.sc-code::before  { background: linear-gradient(90deg, var(--blue), var(--green)); }
-.sc-ai::before    { background: linear-gradient(90deg, var(--gold), #d0a13c); }
-
-.skill-head { display: flex; align-items: center; gap: .6rem; margin-bottom: .9rem; }
-.skill-ico { font-size: 1.2rem; }
-.skill-name { font-size: .85rem; font-weight: 600; letter-spacing: -.01em; }
-.skill-tags { display: flex; flex-wrap: wrap; gap: .32rem; }
+.tags { display:flex; gap:.4rem; flex-wrap:wrap; margin-bottom:1.6rem; }
 .st {
-  font-size: .68rem; font-weight: 500; padding: .22rem .55rem; border-radius: 5px; border: 1px solid;
-  transition: background var(--t);
+  font-size:.74rem; font-weight:500; padding:.28rem .65rem; border-radius:7px;
+  border:1px solid var(--border); background:var(--bg3); color:var(--text-2);
 }
-.st.g { background: var(--green-bg);  border-color: var(--green-border);  color: var(--green); }
-.st.b { background: var(--blue-bg);   border-color: var(--blue-border);   color: var(--blue); }
-.st.p { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
-.st.r { background: var(--red-bg);    border-color: var(--red-border);    color: var(--red); }
-.st.y { background: var(--gold-bg);   border-color: var(--gold-border);   color: var(--gold); }
-.st.n { background: var(--bg3);       border-color: var(--border);        color: var(--text-2); }
-.st.n:hover { background: var(--border); }
+.st.g { background:var(--green-bg);  border-color:var(--green-border);  color:var(--green); }
+.st.b { background:var(--blue-bg);   border-color:var(--blue-border);   color:var(--blue); }
+.st.p { background:var(--purple-bg); border-color:var(--purple-border); color:var(--purple); }
+.st.r { background:var(--red-bg);    border-color:var(--red-border);    color:var(--red); }
+.st.y { background:var(--gold-bg);   border-color:var(--gold-border);   color:var(--gold); }
 
-/* ─── EXPERIENCE ─── */
-.xp-section { background: var(--bg2); border-top: 1px solid var(--border); }
-.xp-table { display: flex; flex-direction: column; }
-.xp-row {
-  display: grid; grid-template-columns: 180px 1fr;
-  gap: 0 2.5rem; padding: 2rem 0;
-  border-bottom: 1px solid var(--border);
-  opacity: 0; transform: translateY(10px);
-  transition: opacity .45s, transform .45s;
-}
-.xp-row.vis { opacity: 1; transform: translateY(0); }
-.xp-row:last-child { border-bottom: none; }
-.xp-when {
-  padding-top: .1rem;
-  font-size: .72rem; font-weight: 500; color: var(--text-3); letter-spacing: .03em; line-height: 1.5;
-}
-.xp-org { font-size: .8rem; font-weight: 600; color: var(--text-2); margin-top: .35rem; }
-.xp-place { font-size: .72rem; color: var(--text-3); margin-top: .1rem; }
-.xp-title { font-size: 1rem; font-weight: 700; letter-spacing: -.015em; margin-bottom: .4rem; }
-.xp-badge {
-  display: inline-block; font-size: .65rem; font-weight: 500; letter-spacing: .04em;
-  padding: .18rem .55rem; border-radius: 6px; border: 1px solid; margin-bottom: .8rem;
-}
-.xb-tel    { background: var(--green-bg);  border-color: var(--green-border);  color: var(--green); }
-.xb-cyber  { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
-.xb-net    { background: var(--blue-bg);   border-color: var(--blue-border);   color: var(--blue); }
-.xb-iot    { background: var(--gold-bg);   border-color: var(--gold-border);   color: var(--gold); }
-.xp-pts { display: flex; flex-direction: column; gap: .35rem; }
-.xp-pt {
-  display: flex; gap: .6rem; align-items: flex-start;
-  font-size: .85rem; color: var(--text-2); line-height: 1.65;
-}
-.xp-pt::before { content: '–'; color: var(--border2); flex-shrink: 0; margin-top: .03rem; }
+.grid2 { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
 
-/* ─── PROJECTS ─── */
-.lab-section { background: var(--bg2); border-top: 1px solid var(--border); }
-.lab-section .proj-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.lab-section .proj-card { background: var(--bg); padding: 1.2rem; }
-.lab-section .proj-desc { font-size: .77rem; }
-.projects-section { background: var(--bg); border-top: 1px solid var(--border); }
-.proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .85rem; }
-.proj-card {
-  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
-  padding: 1.4rem; display: flex; flex-direction: column; gap: .75rem;
-  box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--t), transform var(--t), border-color var(--t);
+.card {
+  background:var(--bg2); border:1px solid var(--border); border-radius:var(--r);
+  padding:1.25rem 1.3rem; box-shadow:var(--shadow-sm); transition:var(--t);
 }
-.proj-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
-.pc-tel:hover   { border-color: var(--green-border); }
-.pc-cyber:hover { border-color: var(--purple-border); }
-.pc-infra:hover { border-color: var(--blue-border); }
-.pc-ai:hover    { border-color: var(--gold-border); }
-.proj-top { display: flex; justify-content: space-between; align-items: flex-start; }
-.proj-ico { font-size: 1.65rem; }
-.proj-badge {
-  font-size: .64rem; font-weight: 500; padding: .18rem .5rem; border-radius: 6px; border: 1px solid;
-}
-.pb-tel   { background: var(--green-bg);  border-color: var(--green-border);  color: var(--green); }
-.pb-cyber { background: var(--purple-bg); border-color: var(--purple-border); color: var(--purple); }
-.pb-infra { background: var(--blue-bg);   border-color: var(--blue-border);   color: var(--blue); }
-.pb-ai    { background: var(--gold-bg);   border-color: var(--gold-border);   color: var(--gold); }
-.proj-title { font-size: .9rem; font-weight: 700; letter-spacing: -.01em; }
-.proj-desc { font-size: .8rem; color: var(--text-2); line-height: 1.65; flex: 1; }
+.card:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); }
+.card-ico { font-size:1.4rem; margin-bottom:.6rem; }
+.card-title { font-size:.95rem; font-weight:700; margin-bottom:.45rem; }
+.card-sub { font-size:.76rem; font-weight:600; color:var(--blue); margin-bottom:.5rem; }
+.card-text { font-size:.84rem; color:var(--text-2); line-height:1.65; }
 
-/* ─── EDUCATION ─── */
-.edu-section { background: var(--bg2); border-top: 1px solid var(--border); }
-.edu-list { display: flex; flex-direction: column; }
+/* ================= EXPÉRIENCES ================= */
+.xp-list { display:flex; flex-direction:column; gap:1rem; }
+.xp {
+  background:var(--bg2); border:1px solid var(--border); border-radius:var(--r);
+  padding:1.3rem 1.4rem; box-shadow:var(--shadow-sm);
+  display:grid; grid-template-columns:170px 1fr; gap:1.4rem;
+}
+.xp-when { font-size:.8rem; font-weight:600; color:var(--text-2); }
+.xp-org { font-size:.78rem; font-weight:700; color:var(--blue); margin-top:.2rem; }
+.xp-loc { font-size:.74rem; color:var(--text-3); margin-top:.1rem; }
+.xp-title { font-size:1rem; font-weight:700; margin-bottom:.25rem; }
+.xp-domain { font-size:.74rem; font-weight:600; color:var(--purple); margin-bottom:.6rem; }
+.xp ul { list-style:none; }
+.xp li {
+  font-size:.85rem; color:var(--text-2); line-height:1.6;
+  padding-left:1rem; position:relative; margin-bottom:.3rem;
+}
+.xp li::before {
+  content:""; position:absolute; left:0; top:.55em;
+  width:5px; height:5px; border-radius:50%; background:var(--blue);
+}
+
+/* ================= FORMATION ================= */
+.edu-list { display:flex; flex-direction:column; gap:.8rem; }
 .edu-row {
-  display: grid; grid-template-columns: 180px 1fr;
-  gap: 0 2.5rem; padding: 1.6rem 0;
-  border-bottom: 1px solid var(--border);
+  background:var(--bg2); border:1px solid var(--border); border-radius:var(--r);
+  padding:1.1rem 1.3rem; box-shadow:var(--shadow-sm);
+  display:grid; grid-template-columns:175px 1fr; gap:1.2rem; align-items:start;
 }
-.edu-row:last-child { border-bottom: none; }
-.edu-when { font-size: .72rem; font-weight: 500; color: var(--text-3); padding-top: .12rem; line-height: 1.5; }
-.edu-degree { font-size: .95rem; font-weight: 700; letter-spacing: -.015em; margin-bottom: .22rem; }
-.edu-school { font-size: .82rem; color: var(--text-2); }
-.edu-note { font-size: .7rem; color: var(--purple); font-weight: 500; margin-top: .25rem; }
+.edu-row.featured { border-color:var(--gold-border); background:linear-gradient(135deg, var(--gold-bg) 0%, var(--bg2) 55%); }
+.edu-when { font-size:.78rem; font-weight:600; color:var(--text-2); line-height:1.5; }
+.edu-degree { font-size:.95rem; font-weight:700; }
+.edu-school { font-size:.82rem; color:var(--blue); font-weight:600; margin-top:.15rem; }
+.edu-note { font-size:.8rem; color:var(--text-2); margin-top:.35rem; line-height:1.6; }
+.badge-adm {
+  display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.05em;
+  background:var(--gold); color:#fff; border-radius:6px; padding:.18rem .55rem;
+  margin-left:.5rem; vertical-align:middle;
+}
 
-/* ─── ABOUT ─── */
-.about-section { background: var(--bg); border-top: 1px solid var(--border); }
-.about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; }
+/* ================= PROFIL ================= */
+.about-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
 .about-card {
-  background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
-  padding: 1.4rem; box-shadow: var(--shadow-sm);
+  background:var(--bg2); border:1px solid var(--border); border-radius:var(--r);
+  padding:1.2rem 1.3rem; box-shadow:var(--shadow-sm);
 }
 .about-card-title {
-  font-size: .7rem; font-weight: 600; color: var(--text-3); letter-spacing: .08em;
-  text-transform: uppercase; margin-bottom: 1rem;
+  font-size:.78rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text-3); margin-bottom:.8rem;
 }
-.about-list { display: flex; flex-direction: column; gap: 0; }
+.about-list { list-style:none; }
 .about-list li {
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: .84rem; color: var(--text-2); padding: .5rem 0;
-  border-bottom: 1px solid var(--border);
+  font-size:.85rem; color:var(--text-2); padding:.32rem 0;
+  border-bottom:1px dashed var(--border); display:flex; justify-content:space-between; gap:.6rem;
 }
-.about-list li:last-child { border-bottom: none; padding-bottom: 0; }
-.about-list li span { font-size: .7rem; color: var(--text-3); }
+.about-list li:last-child { border-bottom:none; }
+.about-list b { color:var(--text); font-weight:600; }
+.about-list span.lv { color:var(--text-3); font-size:.78rem; }
 
-/* ─── CONTACT ─── */
-.contact-section { background: var(--bg2); border-top: 1px solid var(--border); }
-.contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-.contact-left h2 { font-size: 2rem; font-weight: 700; letter-spacing: -.03em; line-height: 1.2; margin-bottom: .9rem; }
-.contact-left h2 em { font-style: normal; color: var(--green); }
-.contact-left p { font-size: .9rem; color: var(--text-2); line-height: 1.75; }
-.contact-links { display: flex; flex-direction: column; gap: .6rem; }
+/* ================= CONTACT ================= */
+.contact-layout { display:grid; grid-template-columns:1.2fr .8fr; gap:2rem; align-items:start; }
+.contact-links { display:flex; flex-direction:column; gap:.7rem; }
 .contact-link {
-  display: flex; align-items: center; gap: .9rem;
-  padding: 1rem 1.1rem; background: var(--bg); border: 1px solid var(--border);
-  border-radius: var(--r); box-shadow: var(--shadow-sm);
-  transition: box-shadow var(--t), border-color var(--t), transform var(--t);
+  display:flex; align-items:center; gap:.9rem;
+  background:var(--bg2); border:1px solid var(--border); border-radius:var(--r);
+  padding:.95rem 1.2rem; box-shadow:var(--shadow-sm); transition:var(--t);
 }
-.contact-link:hover { box-shadow: var(--shadow-md); border-color: var(--border2); transform: translateX(3px); }
-.cl-ico { font-size: 1.1rem; }
-.cl-label { font-size: .67rem; font-weight: 500; color: var(--text-3); letter-spacing: .06em; text-transform: uppercase; }
-.cl-val { font-size: .85rem; font-weight: 500; color: var(--text); }
+.contact-link:hover { box-shadow:var(--shadow-md); transform:translateY(-2px); border-color:var(--blue-border); }
+.cl-ico { font-size:1.25rem; }
+.cl-label { font-size:.72rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
+.cl-val { font-size:.9rem; font-weight:600; }
 
-/* ─── FOOTER ─── */
+/* ================= FOOTER ================= */
 footer {
-  border-top: 1px solid var(--border); background: var(--bg);
-  padding: 1.25rem 2.5rem;
-  display: flex; align-items: center; justify-content: space-between;
-  font-size: .72rem; color: var(--text-3);
+  border-top:1px solid var(--border); padding:1.6rem 0; margin-top:1rem;
+}
+.foot-in {
+  max-width:1080px; margin:0 auto; padding:0 1.4rem;
+  display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+  font-size:.78rem; color:var(--text-3);
 }
 
-/* ─── KEYFRAMES ─── */
-@keyframes fu { from { opacity:0; transform: translateY(14px); } to { opacity:1; transform: translateY(0); } }
-
-/* ─── RESPONSIVE ─── */
-@media(max-width: 1080px) {
-  .lab-section .proj-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+/* ================= RESPONSIVE ================= */
+@media (max-width: 860px) {
+  .hero-grid { grid-template-columns:1fr; }
+  .h-photo-wrap { order:-1; }
+  .grid3 { grid-template-columns:repeat(2,1fr); }
+  .about-grid { grid-template-columns:1fr; }
+  .contact-layout { grid-template-columns:1fr; }
 }
-@media(max-width: 860px) {
-  nav { padding: 0 1.25rem; }
-  .nav-links { display: none; }
-  #hero, .telecom-layout, .contact-layout { grid-template-columns: 1fr; gap: 2.5rem; padding-left: 1.25rem; padding-right: 1.25rem; }
-  .h-photo-wrap { width: min(70vw, 220px); }
-  .section-i { padding: 3.5rem 1.25rem; }
-  .about-grid { grid-template-columns: 1fr; }
-  .xp-row, .edu-row { grid-template-columns: 1fr; gap: .5rem; }
-  .lab-section .proj-grid { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: .3rem; text-align: center; padding: 1rem 1.25rem; }
+@media (max-width: 640px) {
+  .grid2, .grid3 { grid-template-columns:1fr; }
+  .xp, .edu-row { grid-template-columns:1fr; gap:.5rem; }
+  .nav { display:none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation:none !important; transition:none !important; }
+  html { scroll-behavior:auto; }
 }
 </style>
 </head>
-<body>
+<body data-lang="fr">
 
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <span class="nav-logo-dot" title="En ligne" aria-label="En ligne"></span>
-    Janushann Thamilalakan
+<!-- ================= TOPBAR ================= -->
+<div class="topbar">
+  <div class="topbar-in">
+    <div class="brand">Janushann Thamilalakan</div>
+    <nav class="nav">
+      <a href="#telecom"><span class="fr">Télécoms &amp; RF</span><span class="en">Telecom &amp; RF</span></a>
+      <a href="#electronique"><span class="fr">Électronique</span><span class="en">Electronics</span></a>
+      <a href="#skills"><span class="fr">Compétences</span><span class="en">Skills</span></a>
+      <a href="#experience"><span class="fr">Expériences</span><span class="en">Experience</span></a>
+      <a href="#lab">Lab</a>
+      <a href="#formation"><span class="fr">Formation</span><span class="en">Education</span></a>
+    </nav>
+    <button class="lang-btn" id="langToggle" aria-label="Switch language">
+      🌐 <span class="fr"><b>FR</b> / EN</span><span class="en">FR / <b>EN</b></span>
+    </button>
+    <a class="btn-contact" href="#contact">Contact</a>
   </div>
-  <ul class="nav-links">
-    <li><a href="#telecom">Télécoms</a></li>
-    <li><a href="#skills">Compétences</a></li>
-    <li><a href="#experience">Expériences</a></li>
-    <li><a href="#lab">Lab</a></li>
-    <li><a href="#projects">Projets</a></li>
-    <li><a href="#about">Profil</a></li>
-  </ul>
-  <a href="mailto:janushann@outlook.fr" class="nav-cta">Contact</a>
-</nav>
-
-<!-- HERO -->
-<section style="background:var(--bg)">
-  <div id="hero">
-    <div>
-      <div class="h-overline">
-        <span class="h-overline-pill">Disponible · Sept. 2026</span>
-        Île-de-France · Alternance ingénieur 3 ans
-      </div>
-      <h1 class="h-name">
-        Janushann<br>
-        <span>Thamilalakan</span>
-      </h1>
-      <div class="h-domains">
-        <div class="domain-tag dt-green">📡 Télécommunications</div>
-        <div class="domain-tag dt-blue">🌐 Réseaux</div>
-        <div class="domain-tag dt-purple">🛡️ Cybersécurité</div>
-        <div class="domain-tag dt-gold">🤖 IA appliquée</div>
-      </div>
-      <p class="h-desc">
-        Ingénierie réseau, cybersécurité &amp; télécom — avec une approche orientée lab, mesure et systèmes réels. Je conçois, segmente et sécurise des environnements réseau, du routage avancé au SOC/SIEM, avec une attention forte aux infrastructures exploitables.
-      </p>
-      <p class="h-lab-note">
-        Lab personnel actif : expérimentation 5G SA, scénarios attaque/défense, infrastructure virtualisée et automatisation IA pour l'analyse de logs et la détection d'anomalies.
-      </p>
-      <div class="h-actions">
-        <a href="https://www.linkedin.com/in/janushann-thamilalakan-14850a293" target="_blank" class="btn-solid">
-          <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452z"/></svg>
-          LinkedIn
-        </a>
-        <a href="#lab" class="btn-ghost">Explorer le lab</a>
-        <a href="#contact" class="btn-ghost">Me contacter</a>
-      </div>
-    </div>
-
-    <div class="h-right">
-      <div class="h-photo-wrap">
-        <div class="h-photo-inner">
-          <img src="image.png" alt="Portrait de Janushann Thamilalakan" width="800" height="800" decoding="async">
-        </div>
-      </div>
-      <div class="h-kpis">
-        <div class="kpi"><div class="kpi-val kv-green">4</div><div class="kpi-lbl">Axes techniques</div></div>
-        <div class="kpi"><div class="kpi-val kv-blue">BGP</div><div class="kpi-lbl">MPLS &amp; routage</div></div>
-        <div class="kpi"><div class="kpi-val kv-purple">5+</div><div class="kpi-lbl">Projets réalisés</div></div>
-        <div class="kpi"><div class="kpi-val kv-gold">3</div><div class="kpi-lbl">Langues parlées</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATUS STRIP -->
-<div class="status-strip">
-  <div class="s-dot"></div>
-  <span class="s-text">Ouvert aux opportunités d'alternance ingénieur à partir de septembre 2026</span>
 </div>
 
-<!-- TÉLÉCOMS -->
-<section id="telecom" class="section-w telecom-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">01</span>
-      <h2 class="section-title">Télécommunications</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="telecom-layout">
-      <div class="telecom-left">
-        <div class="telecom-eyebrow">Domaine de prédilection</div>
-        <h2>Télécoms, RF<br>&amp; transmission <em>sans fil</em></h2>
-        <p>
-          Je travaille les télécommunications par la mesure, l'analyse RF et l'exploitation de systèmes réels. Mon terrain couvre le WiFi, la 5G, la fibre optique et la diffusion IP, avec une pratique en environnement de production chez SUD RADIO sur des liaisons analogiques et numériques.
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="h-pills">
+          <span class="pill esiee">🎓 <span class="fr">Admis ESIEE Paris — Cycle ingénieur 2026</span><span class="en">Admitted to ESIEE Paris — Engineering program 2026</span></span>
+          <span class="pill dispo"><span class="dot"></span> <span class="fr">Recherche alternance · Sept. 2026</span><span class="en">Seeking apprenticeship · Sept. 2026</span></span>
+        </div>
+        <h1 class="h-name">Janushann<br>Thamilalakan</h1>
+        <div class="h-role">
+          <span class="fr">Futur ingénieur Électronique &amp; Informatique — Systèmes Communicants</span>
+          <span class="en">Future Electronics &amp; Computer Engineering student — Communicating Systems</span>
+        </div>
+        <div class="h-domains">
+          <span class="domain-tag dt-blue">📡 <span class="fr">Télécoms &amp; RF</span><span class="en">Telecom &amp; RF</span></span>
+          <span class="domain-tag dt-gold">🔌 <span class="fr">Électronique &amp; embarqué</span><span class="en">Electronics &amp; embedded</span></span>
+          <span class="domain-tag dt-green">🌐 <span class="fr">Réseaux</span><span class="en">Networks</span></span>
+          <span class="domain-tag dt-purple">🛡️ <span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></span>
+        </div>
+        <p class="h-desc">
+          <span class="fr">Admis en cycle ingénieur à <b>ESIEE Paris</b> (filière Électronique &amp; Informatique — Systèmes Communicants), je recherche une <b>alternance de 3 ans dès septembre 2026</b>. Issu d'un BUT Réseaux &amp; Télécommunications et du terrain radio chez SUD RADIO, j'aborde les systèmes communicants par la mesure et l'exploitation réelle — du signal RF jusqu'à l'application.</span>
+          <span class="en">Admitted to the engineering program at <b>ESIEE Paris</b> (Electronics &amp; Computer Science — Communicating Systems track), I am looking for a <b>3-year apprenticeship starting September 2026</b>. With a background in Networks &amp; Telecommunications (BUT) and hands-on radio experience at SUD RADIO, I approach communicating systems through measurement and real-world operations — from RF signal to application.</span>
         </p>
-        <div class="tag-cloud">
-          <span class="tc-tag">WiFi 802.11</span>
-          <span class="tc-tag">5G SA / LTE</span>
-          <span class="tc-tag">OpenAirInterface</span>
-          <span class="tc-tag">Réseaux mobiles</span>
-          <span class="tc-tag">Fibre optique</span>
-          <span class="tc-tag">ADSL</span>
-          <span class="tc-tag">Antennes</span>
-          <span class="tc-tag">Analyse spectrale</span>
-          <span class="tc-tag">Mesure de signaux</span>
-          <span class="tc-tag">Atténuation</span>
-          <span class="tc-tag">Téléphonie analogique</span>
-          <span class="tc-tag">Téléphonie numérique</span>
-          <span class="tc-tag">Audio / Vidéo sur IP</span>
-          <span class="tc-tag">Streaming</span>
+        <p class="h-note">
+          <span class="fr">Lab personnel actif : expérimentation 5G SA (OpenAirInterface), analyse spectrale, infrastructure virtualisée, scénarios attaque/défense et détection assistée par IA.</span>
+          <span class="en">Active home lab: 5G SA experimentation (OpenAirInterface), spectrum analysis, virtualized infrastructure, attack/defense scenarios and AI-assisted detection.</span>
+        </p>
+        <div class="h-actions">
+          <a class="btn-solid" href="https://www.linkedin.com/in/janushann-thamilalakan-14850a293" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn-ghost" href="#lab"><span class="fr">Explorer le lab</span><span class="en">Explore the lab</span></a>
+          <a class="btn-ghost" href="mailto:janushann@outlook.fr"><span class="fr">Me contacter</span><span class="en">Get in touch</span></a>
         </div>
       </div>
-      <div class="telecom-cards">
-        <div class="tc-card">
-          <div class="tc-card-ico">📶</div>
-          <div class="tc-card-title">Réseaux radio &amp; 5G</div>
-          <div class="tc-card-desc">Analyse WiFi, 5G et RF, mesure de couverture, caractérisation d'antennes et expérimentation OAI.</div>
+      <div class="h-photo-wrap">
+        <div class="h-photo-inner">
+          <img src="image.png" alt="Portrait de Janushann Thamilalakan" width="290" height="290">
         </div>
-        <div class="tc-card">
-          <div class="tc-card-ico">🔭</div>
-          <div class="tc-card-title">Analyse spectrale</div>
-          <div class="tc-card-desc">Détection d'interférences, qualification de signaux, étude du spectre fréquentiel.</div>
+      </div>
+    </div>
+
+    <!-- Signature : la chaîne du système communicant -->
+    <div class="chain">
+      <div class="chain-title">
+        <span class="fr">Mon terrain de jeu — du capteur à l'application</span>
+        <span class="en">My playground — from sensor to application</span>
+      </div>
+      <div class="chain-flow">
+        <span class="chain-step dt-gold">🔌 <span class="fr">Capteur &amp; électronique</span><span class="en">Sensor &amp; electronics</span></span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step dt-gold">⚙️ Firmware</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step dt-blue">📡 <span class="fr">Transmission RF</span><span class="en">RF transmission</span></span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step dt-green">🌐 <span class="fr">Réseau</span><span class="en">Network</span></span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step dt-purple">🛡️ <span class="fr">Sécurité</span><span class="en">Security</span></span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step dt-red">🖥️ Application</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= 01 TÉLÉCOMS & RF ================= -->
+<section id="telecom">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span></div>
+    <div class="sec-eyebrow"><span class="fr">Domaine de prédilection</span><span class="en">Core focus</span></div>
+    <h2 class="sec-title">
+      <span class="fr">Télécoms, RF &amp; transmission <em>sans fil</em></span>
+      <span class="en">Telecom, RF &amp; <em>wireless</em> transmission</span>
+    </h2>
+    <p class="sec-desc">
+      <span class="fr">Je travaille les télécommunications par la mesure, l'analyse RF et l'exploitation de systèmes réels. Mon terrain couvre le WiFi, la 5G, la fibre optique et la diffusion IP, avec une pratique en environnement de production chez SUD RADIO sur des liaisons analogiques et numériques.</span>
+      <span class="en">I approach telecommunications through measurement, RF analysis and the operation of real systems. My field covers WiFi, 5G, optical fiber and IP broadcasting, with production experience at SUD RADIO on analog and digital links.</span>
+    </p>
+    <div class="tags">
+      <span class="st b">WiFi 802.11</span><span class="st b">5G SA / LTE</span><span class="st b">OpenAirInterface</span>
+      <span class="st b"><span class="fr">Réseaux mobiles</span><span class="en">Mobile networks</span></span>
+      <span class="st b"><span class="fr">Fibre optique</span><span class="en">Optical fiber</span></span>
+      <span class="st b">ADSL</span><span class="st b"><span class="fr">Antennes</span><span class="en">Antennas</span></span>
+      <span class="st b"><span class="fr">Analyse spectrale</span><span class="en">Spectrum analysis</span></span>
+      <span class="st b"><span class="fr">Mesure de signaux</span><span class="en">Signal measurement</span></span>
+      <span class="st b"><span class="fr">Atténuation</span><span class="en">Attenuation</span></span>
+      <span class="st b"><span class="fr">Téléphonie analogique &amp; numérique</span><span class="en">Analog &amp; digital telephony</span></span>
+      <span class="st b"><span class="fr">Audio / Vidéo sur IP</span><span class="en">Audio / Video over IP</span></span>
+      <span class="st b">Streaming</span>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-ico">📶</div>
+        <div class="card-title"><span class="fr">Réseaux radio &amp; 5G</span><span class="en">Radio networks &amp; 5G</span></div>
+        <p class="card-text">
+          <span class="fr">Analyse WiFi, 5G et RF, mesure de couverture, caractérisation d'antennes et expérimentation OpenAirInterface (gNB, UE, Core).</span>
+          <span class="en">WiFi, 5G and RF analysis, coverage measurement, antenna characterization and OpenAirInterface experimentation (gNB, UE, Core).</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🔭</div>
+        <div class="card-title"><span class="fr">Analyse spectrale</span><span class="en">Spectrum analysis</span></div>
+        <p class="card-text">
+          <span class="fr">Détection d'interférences, qualification de signaux, étude du spectre fréquentiel à l'analyseur de spectre.</span>
+          <span class="en">Interference detection, signal qualification, frequency-domain analysis with a spectrum analyzer.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">💡</div>
+        <div class="card-title"><span class="fr">Fibre &amp; cuivre</span><span class="en">Fiber &amp; copper</span></div>
+        <p class="card-text">
+          <span class="fr">Mesure d'atténuation, raccordement fibre, qualification ADSL et liens Ethernet.</span>
+          <span class="en">Attenuation measurement, fiber splicing, ADSL qualification and Ethernet links.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">📻</div>
+        <div class="card-title"><span class="fr">Diffusion &amp; IP</span><span class="en">Broadcasting &amp; IP</span></div>
+        <p class="card-text">
+          <span class="fr">Supervision de flux audio/vidéo IP, diagnostic de liaisons radio et maintien de continuité de service en production.</span>
+          <span class="en">Audio/video over IP flow monitoring, radio link diagnostics and service continuity in production.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 02 ÉLECTRONIQUE & EMBARQUÉ ================= -->
+<section id="electronique">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span></div>
+    <div class="sec-eyebrow"><span class="fr">Cap ESIEE Paris</span><span class="en">ESIEE Paris track</span></div>
+    <h2 class="sec-title">
+      <span class="fr">Électronique &amp; systèmes <em>embarqués</em></span>
+      <span class="en">Electronics &amp; <em>embedded</em> systems</span>
+    </h2>
+    <p class="sec-desc">
+      <span class="fr">Mon expérience radio m'a mis au contact direct du matériel : chaînes d'émission, instrumentation et mesure. Avec des bases d'électronique issues du Bac STI2D et de la CPGE TSI, je monte en compétence vers la conception embarquée — le cœur de ma formation ESIEE.</span>
+      <span class="en">My radio experience put me in direct contact with hardware: transmission chains, instrumentation and measurement. With electronics foundations from STI2D and CPGE TSI, I am building up towards embedded design — the core of my ESIEE program.</span>
+    </p>
+    <div class="tags">
+      <span class="st y"><span class="fr">Instrumentation &amp; mesure</span><span class="en">Instrumentation &amp; measurement</span></span>
+      <span class="st y">Oscilloscope</span>
+      <span class="st y"><span class="fr">Analyseur de spectre</span><span class="en">Spectrum analyzer</span></span>
+      <span class="st y"><span class="fr">Maintenance chaînes RF</span><span class="en">RF chain maintenance</span></span>
+      <span class="st y"><span class="fr">Électronique analogique &amp; numérique</span><span class="en">Analog &amp; digital electronics</span></span>
+      <span class="st y">IoT</span>
+      <span class="st y"><span class="fr">Capteurs</span><span class="en">Sensors</span></span>
+      <span class="st y">Arduino · STM32</span>
+      <span class="st y">C / C++</span>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-ico">🛠️</div>
+        <div class="card-title"><span class="fr">Pratique terrain du matériel</span><span class="en">Hands-on hardware practice</span></div>
+        <p class="card-text">
+          <span class="fr">Diagnostic et maintenance d'équipements électroniques en production chez SUD RADIO : chaînes de diffusion, consoles, liaisons RF analogiques et numériques.</span>
+          <span class="en">Diagnosis and maintenance of electronic equipment in production at SUD RADIO: broadcast chains, consoles, analog and digital RF links.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🌡️</div>
+        <div class="card-title"><span class="fr">IoT &amp; objets connectés</span><span class="en">IoT &amp; connected devices</span></div>
+        <p class="card-text">
+          <span class="fr">Administration et supervision d'objets connectés en environnement opérationnel : terminaux de paiement, caméras IP, capteurs réseau.</span>
+          <span class="en">Administration and monitoring of connected devices in operational environments: payment terminals, IP cameras, network sensors.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">📐</div>
+        <div class="card-title"><span class="fr">Socle scientifique</span><span class="en">Scientific foundation</span></div>
+        <p class="card-text">
+          <span class="fr">Bases d'électronique analogique et numérique, logique combinatoire et séquentielle, acquises en STI2D (SIN) et CPGE TSI, consolidées en BUT RT.</span>
+          <span class="en">Foundations in analog and digital electronics, combinational and sequential logic, from STI2D (SIN) and CPGE TSI, consolidated during my BUT.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🚀</div>
+        <div class="card-title"><span class="fr">En construction — projets embarqués</span><span class="en">In progress — embedded projects</span></div>
+        <p class="card-text">
+          <span class="fr">Montée en compétence active sur microcontrôleurs (Arduino, STM32), bus de communication (UART, I2C, SPI) et programmation C embarquée, en préparation du cycle ESIEE.</span>
+          <span class="en">Actively building skills in microcontrollers (Arduino, STM32), communication buses (UART, I2C, SPI) and embedded C, in preparation for the ESIEE program.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 03 COMPÉTENCES ================= -->
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span></div>
+    <h2 class="sec-title"><span class="fr">Compétences techniques</span><span class="en">Technical skills</span></h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-ico">📡</div>
+        <div class="card-title"><span class="fr">Télécommunications</span><span class="en">Telecommunications</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st b">WiFi 802.11</span><span class="st b">5G SA / Mobile</span><span class="st b">OpenAirInterface gNB/UE/Core</span>
+          <span class="st b"><span class="fr">Fibre optique</span><span class="en">Optical fiber</span></span><span class="st b">ADSL</span>
+          <span class="st b"><span class="fr">Antennes</span><span class="en">Antennas</span></span>
+          <span class="st b"><span class="fr">Analyse spectrale</span><span class="en">Spectrum analysis</span></span>
+          <span class="st b"><span class="fr">Audio/Vidéo IP</span><span class="en">Audio/Video IP</span></span>
         </div>
-        <div class="tc-card">
-          <div class="tc-card-ico">💡</div>
-          <div class="tc-card-title">Fibre &amp; cuivre</div>
-          <div class="tc-card-desc">Mesure d'atténuation, raccordement fibre, qualification ADSL et liens Ethernet.</div>
+      </div>
+      <div class="card">
+        <div class="card-ico">🔌</div>
+        <div class="card-title"><span class="fr">Électronique &amp; embarqué</span><span class="en">Electronics &amp; embedded</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st y"><span class="fr">Instrumentation</span><span class="en">Instrumentation</span></span>
+          <span class="st y">Oscilloscope</span>
+          <span class="st y"><span class="fr">Mesure RF</span><span class="en">RF measurement</span></span>
+          <span class="st y">IoT</span><span class="st y"><span class="fr">Capteurs</span><span class="en">Sensors</span></span>
+          <span class="st y">Arduino</span><span class="st y">STM32</span>
+          <span class="st y">UART · I2C · SPI</span>
         </div>
-        <div class="tc-card">
-          <div class="tc-card-ico">📻</div>
-          <div class="tc-card-title">Diffusion &amp; IP</div>
-          <div class="tc-card-desc">Supervision de flux audio/vidéo IP, diagnostic de liaisons radio et maintien de continuité de service.</div>
+      </div>
+      <div class="card">
+        <div class="card-ico">🌐</div>
+        <div class="card-title"><span class="fr">Réseaux</span><span class="en">Networks</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st g">BGP</span><span class="st g">OSPF</span><span class="st g">MPLS</span><span class="st g">VRF</span>
+          <span class="st g">VLAN</span><span class="st g">VPN / NAT</span><span class="st g">TCP/IP</span>
+          <span class="st g">DNS / DHCP</span><span class="st g">SSH</span>
+          <span class="st g"><span class="fr">Routage multi-sites</span><span class="en">Multi-site routing</span></span>
+          <span class="st g">LAN / WAN</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-ico">🛡️</div>
+        <div class="card-title"><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st p">SOC</span><span class="st p">SIEM ELK</span><span class="st p">MITRE ATT&amp;CK</span>
+          <span class="st p">MITRE Caldera</span><span class="st p">Elasticsearch</span><span class="st p">Logstash / Kibana</span>
+          <span class="st p"><span class="fr">Détection d'intrusion</span><span class="en">Intrusion detection</span></span>
+          <span class="st p">Active Directory</span><span class="st p">Pentest lab</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-ico">⚙️</div>
+        <div class="card-title"><span class="fr">Systèmes &amp; outils</span><span class="en">Systems &amp; tools</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st">GNU/Linux</span><span class="st">Proxmox</span><span class="st">Windows Server</span>
+          <span class="st">Cisco IOS</span><span class="st">Wireshark</span><span class="st">tcpdump</span>
+          <span class="st">Packet Tracer</span><span class="st">Monitoring</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-ico">💻</div>
+        <div class="card-title"><span class="fr">Programmation &amp; IA</span><span class="en">Programming &amp; AI</span></div>
+        <div class="tags" style="margin-bottom:0">
+          <span class="st r">Python</span><span class="st r">C</span><span class="st r">Bash</span><span class="st r">PowerShell</span>
+          <span class="st r">Java</span><span class="st r">SQL</span><span class="st r">HTML / PHP</span>
+          <span class="st r"><span class="fr">Détection d'anomalies</span><span class="en">Anomaly detection</span></span>
+          <span class="st r"><span class="fr">Analyse de logs</span><span class="en">Log analysis</span></span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- COMPÉTENCES -->
-<section id="skills" class="section-w skills-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">02</span>
-      <h2 class="section-title">Compétences techniques</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="skills-grid">
+<!-- ================= 04 EXPÉRIENCES ================= -->
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span></div>
+    <h2 class="sec-title"><span class="fr">Expériences professionnelles</span><span class="en">Professional experience</span></h2>
+    <div class="xp-list">
 
-      <div class="skill-card sc-tel">
-        <div class="skill-head"><div class="skill-ico">📡</div><div class="skill-name">Télécommunications</div></div>
-        <div class="skill-tags">
-          <span class="st g">WiFi 802.11</span><span class="st g">5G SA / Mobile</span><span class="st g">OpenAirInterface</span>
-          <span class="st g">gNB / UE / Core</span><span class="st g">Fibre optique</span>
-          <span class="st g">ADSL</span><span class="st g">Antennes</span><span class="st g">Analyse spectrale</span>
-          <span class="st n">Mesure signaux</span><span class="st n">Atténuation</span>
-          <span class="st n">Téléphonie analogique</span><span class="st n">Audio/Vidéo IP</span>
-        </div>
-      </div>
-
-      <div class="skill-card sc-cyber">
-        <div class="skill-head"><div class="skill-ico">🛡️</div><div class="skill-name">Cybersécurité</div></div>
-        <div class="skill-tags">
-          <span class="st p">SOC</span><span class="st p">SIEM ELK</span><span class="st p">Detection engineering</span>
-          <span class="st p">MITRE ATT&amp;CK</span><span class="st p">MITRE Caldera</span>
-          <span class="st n">Elasticsearch</span><span class="st n">Logstash / Kibana</span>
-          <span class="st n">Détection d'intrusion</span><span class="st n">Active Directory</span>
-          <span class="st n">Pentest lab</span><span class="st n">Mouvement latéral</span><span class="st n">Syslog</span>
-        </div>
-      </div>
-
-      <div class="skill-card sc-net">
-        <div class="skill-head"><div class="skill-ico">🌐</div><div class="skill-name">Réseaux</div></div>
-        <div class="skill-tags">
-          <span class="st b">BGP</span><span class="st b">OSPF</span><span class="st b">MPLS</span>
-          <span class="st b">VRF</span><span class="st b">VLAN</span><span class="st n">VPN / NAT</span>
-          <span class="st n">TCP/IP</span><span class="st n">DNS / DHCP</span><span class="st n">SSH</span>
-          <span class="st n">Routage multi-sites</span><span class="st n">LAN / WAN</span>
-        </div>
-      </div>
-
-      <div class="skill-card sc-sys">
-        <div class="skill-head"><div class="skill-ico">⚙️</div><div class="skill-name">Administration Système</div></div>
-        <div class="skill-tags">
-          <span class="st r">GNU/Linux</span><span class="st r">Proxmox</span><span class="st r">Windows Server</span><span class="st r">Cisco IOS</span>
-          <span class="st n">Wireshark</span><span class="st n">tcpdump</span>
-          <span class="st n">Cisco Packet Tracer</span><span class="st n">SFTP</span><span class="st n">Monitoring</span>
-        </div>
-      </div>
-
-      <div class="skill-card sc-code">
-        <div class="skill-head"><div class="skill-ico">💻</div><div class="skill-name">Programmation</div></div>
-        <div class="skill-tags">
-          <span class="st b">Python</span><span class="st b">Bash</span><span class="st b">PowerShell</span>
-          <span class="st n">Automatisation réseau</span><span class="st n">Parsing de logs</span>
-          <span class="st n">C</span><span class="st n">Java</span><span class="st n">HTML / PHP</span><span class="st n">SQL</span>
-        </div>
-      </div>
-
-      <div class="skill-card sc-ai">
-        <div class="skill-head"><div class="skill-ico">🤖</div><div class="skill-name">IA appliquée</div></div>
-        <div class="skill-tags">
-          <span class="st y">Analyse de logs</span><span class="st y">Détection d'anomalies</span><span class="st y">Corrélation d'événements</span>
-          <span class="st n">Enrichissement SIEM</span><span class="st n">Scripts Python intelligents</span>
-          <span class="st n">Automatisation SOC</span><span class="st n">Réseaux observables</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- EXPÉRIENCES -->
-<section id="experience" class="section-w xp-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">03</span>
-      <h2 class="section-title">Expériences professionnelles</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="xp-table">
-
-      <div class="xp-row">
+      <div class="xp">
         <div>
-          <div class="xp-when">Déc. 2025 — Mars 2026</div>
-          <div class="xp-org">UPEC IUT</div>
-          <div class="xp-place">Créteil-Vitry</div>
-        </div>
-        <div>
-          <div class="xp-title">Audit de sécurité SI — Simulation SOC &amp; détection</div>
-          <span class="xp-badge xb-cyber">Cybersécurité · SOC/SIEM</span>
-          <div class="xp-pts">
-            <div class="xp-pt">Émulation d'adversaire avec MITRE Caldera (ATT&amp;CK) sur environnement Windows/Linux</div>
-            <div class="xp-pt">Déploiement d'agents Sandcat, mouvement latéral et ciblage Active Directory</div>
-            <div class="xp-pt">Construction de chaînes de détection via SIEM ELK (Elasticsearch, Logstash, Kibana)</div>
-            <div class="xp-pt">Corrélation d'événements sécurité et réseau pour qualifier les signaux faibles</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="xp-row">
-        <div>
-          <div class="xp-when">Depuis août 2024</div>
+          <div class="xp-when"><span class="fr">Depuis août 2024</span><span class="en">Since Aug. 2024</span></div>
           <div class="xp-org">SUD RADIO</div>
-          <div class="xp-place">Boulogne-Billancourt</div>
+          <div class="xp-loc">Boulogne-Billancourt</div>
         </div>
         <div>
-          <div class="xp-title">Technicien maintenance radio &amp; systèmes IP</div>
-          <span class="xp-badge xb-tel">Télécoms · Réseaux · Production</span>
-          <div class="xp-pts">
-            <div class="xp-pt">Maintien opérationnel de liaisons analogiques et numériques pour émissions et interviews à distance</div>
-            <div class="xp-pt">Supervision de flux de diffusion audio/vidéo sur IP et qualification d'incidents de service</div>
-            <div class="xp-pt">Installation et configuration d'équipements réseau : switchs, caméras IP et postes techniques</div>
-            <div class="xp-pt">Dépannage réseau et système, du diagnostic terrain à la résolution hardware/software</div>
-            <div class="xp-pt">Maintenance d'environnements techniques : informatique, consoles, audio et chaînes de diffusion</div>
-          </div>
+          <div class="xp-title"><span class="fr">Technicien maintenance radio &amp; systèmes IP</span><span class="en">Radio &amp; IP systems maintenance technician</span></div>
+          <div class="xp-domain"><span class="fr">Télécoms · RF · Électronique · Production</span><span class="en">Telecom · RF · Electronics · Production</span></div>
+          <ul>
+            <li><span class="fr">Maintien opérationnel de liaisons radio analogiques et numériques pour émissions et interviews à distance</span><span class="en">Operational upkeep of analog and digital radio links for live shows and remote interviews</span></li>
+            <li><span class="fr">Diagnostic et maintenance d'équipements électroniques : chaînes de diffusion, consoles audio, postes techniques</span><span class="en">Diagnosis and maintenance of electronic equipment: broadcast chains, audio consoles, technical stations</span></li>
+            <li><span class="fr">Supervision de flux de diffusion audio/vidéo sur IP et qualification d'incidents de service</span><span class="en">Audio/video over IP broadcast flow monitoring and service incident qualification</span></li>
+            <li><span class="fr">Installation et configuration d'équipements réseau : switchs, caméras IP et postes techniques</span><span class="en">Installation and configuration of network equipment: switches, IP cameras and technical workstations</span></li>
+            <li><span class="fr">Dépannage réseau et système, du diagnostic terrain à la résolution hardware/software</span><span class="en">Network and system troubleshooting, from field diagnosis to hardware/software resolution</span></li>
+          </ul>
         </div>
       </div>
 
-      <div class="xp-row">
+      <div class="xp">
         <div>
-          <div class="xp-when">Janvier 2024</div>
+          <div class="xp-when"><span class="fr">Déc. 2025 — Mars 2026</span><span class="en">Dec. 2025 — Mar. 2026</span></div>
+          <div class="xp-org">UPEC IUT</div>
+          <div class="xp-loc">Créteil-Vitry</div>
+        </div>
+        <div>
+          <div class="xp-title"><span class="fr">Audit de sécurité SI — Simulation SOC &amp; détection</span><span class="en">IS security audit — SOC simulation &amp; detection</span></div>
+          <div class="xp-domain"><span class="fr">Cybersécurité · SOC/SIEM</span><span class="en">Cybersecurity · SOC/SIEM</span></div>
+          <ul>
+            <li><span class="fr">Émulation d'adversaire avec MITRE Caldera (ATT&amp;CK) sur environnement Windows/Linux</span><span class="en">Adversary emulation with MITRE Caldera (ATT&amp;CK) on Windows/Linux environments</span></li>
+            <li><span class="fr">Déploiement d'agents Sandcat, mouvement latéral et ciblage Active Directory</span><span class="en">Sandcat agent deployment, lateral movement and Active Directory targeting</span></li>
+            <li><span class="fr">Construction de chaînes de détection via SIEM ELK (Elasticsearch, Logstash, Kibana)</span><span class="en">Building detection pipelines with the ELK SIEM stack (Elasticsearch, Logstash, Kibana)</span></li>
+            <li><span class="fr">Corrélation d'événements sécurité et réseau pour qualifier les signaux faibles</span><span class="en">Correlating security and network events to qualify weak signals</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div>
+          <div class="xp-when"><span class="fr">Janvier 2024</span><span class="en">January 2024</span></div>
           <div class="xp-org">IUT Créteil-Vitry</div>
-          <div class="xp-place">Créteil</div>
+          <div class="xp-loc">Créteil</div>
         </div>
         <div>
-          <div class="xp-title">Architecture réseau d'entreprise multi-sites</div>
-          <span class="xp-badge xb-net">Réseaux · Architecture LAN/WAN</span>
-          <div class="xp-pts">
-            <div class="xp-pt">Conception d'une architecture multi-sites segmentée par pôles métier</div>
-            <div class="xp-pt">Déploiement LAN/WAN, durcissement des switchs et routeurs Cisco, routage inter-sites</div>
-            <div class="xp-pt">Mise en service de services internes FTP et intranet web pour valider les flux applicatifs</div>
-          </div>
+          <div class="xp-title"><span class="fr">Architecture réseau d'entreprise multi-sites</span><span class="en">Multi-site enterprise network architecture</span></div>
+          <div class="xp-domain"><span class="fr">Réseaux · Architecture LAN/WAN</span><span class="en">Networks · LAN/WAN architecture</span></div>
+          <ul>
+            <li><span class="fr">Conception d'une architecture multi-sites segmentée par pôles métier</span><span class="en">Design of a multi-site architecture segmented by business units</span></li>
+            <li><span class="fr">Déploiement LAN/WAN, durcissement des switchs et routeurs Cisco, routage inter-sites</span><span class="en">LAN/WAN deployment, Cisco switch and router hardening, inter-site routing</span></li>
+            <li><span class="fr">Mise en service de services internes FTP et intranet web pour valider les flux applicatifs</span><span class="en">Deployment of internal FTP and web intranet services to validate application flows</span></li>
+          </ul>
         </div>
       </div>
 
-      <div class="xp-row">
+      <div class="xp">
         <div>
-          <div class="xp-when">Juin — Sept. 2022</div>
+          <div class="xp-when"><span class="fr">Juin — Sept. 2022</span><span class="en">Jun. — Sept. 2022</span></div>
           <div class="xp-org">Niru Exotique</div>
-          <div class="xp-place">Pithiviers</div>
+          <div class="xp-loc">Pithiviers</div>
         </div>
         <div>
-          <div class="xp-title">Administration IoT &amp; vidéosurveillance — TPE</div>
-          <span class="xp-badge xb-iot">IoT · Administration</span>
-          <div class="xp-pts">
-            <div class="xp-pt">Gestion de terminaux de paiement et d'objets connectés en environnement opérationnel</div>
-            <div class="xp-pt">Administration, supervision et dépannage des caméras IP du réseau local</div>
+          <div class="xp-title"><span class="fr">Administration IoT &amp; vidéosurveillance — TPE</span><span class="en">IoT &amp; video surveillance administration — small business</span></div>
+          <div class="xp-domain"><span class="fr">IoT · Administration</span><span class="en">IoT · Administration</span></div>
+          <ul>
+            <li><span class="fr">Gestion de terminaux de paiement et d'objets connectés en environnement opérationnel</span><span class="en">Management of payment terminals and connected devices in an operational environment</span></li>
+            <li><span class="fr">Administration, supervision et dépannage des caméras IP du réseau local</span><span class="en">Administration, monitoring and troubleshooting of local network IP cameras</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= 05 LAB ================= -->
+<section id="lab">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span></div>
+    <h2 class="sec-title"><span class="fr">Lab &amp; Expérimentations</span><span class="en">Lab &amp; Experiments</span></h2>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-ico">📡</div>
+        <div class="card-sub">5G SA</div>
+        <div class="card-title">OpenAirInterface — gNB, UE &amp; Core</div>
+        <p class="card-text">
+          <span class="fr">Montage expérimental autour d'une architecture 5G Standalone avec gNB, UE et Core. Objectif : comprendre les interfaces radio/core, observer les flux et valider les scénarios d'attachement.</span>
+          <span class="en">Experimental setup of a 5G Standalone architecture with gNB, UE and Core. Goal: understand radio/core interfaces, observe traffic and validate attachment scenarios.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🛡️</div>
+        <div class="card-sub">Attack/Defense</div>
+        <div class="card-title"><span class="fr">Environnements cybersécurité isolés</span><span class="en">Isolated cybersecurity environments</span></div>
+        <p class="card-text">
+          <span class="fr">Labs dédiés à l'analyse de chaînes d'attaque, à la défense active et à la production de détections exploitables, centrés sur les traces et comportements adverses.</span>
+          <span class="en">Labs dedicated to attack chain analysis, active defense and actionable detections, focused on adversary traces and behaviors.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🧱</div>
+        <div class="card-sub">Infra</div>
+        <div class="card-title"><span class="fr">Infrastructure virtualisée Proxmox</span><span class="en">Proxmox virtualized infrastructure</span></div>
+        <p class="card-text">
+          <span class="fr">Virtualisation d'environnements réseau avec VLAN, routage, segmentation et services internes — pour tester des architectures reproductibles avant passage en contexte réel.</span>
+          <span class="en">Virtualized network environments with VLANs, routing, segmentation and internal services — to test reproducible architectures before real-world deployment.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">📈</div>
+        <div class="card-sub">Monitoring</div>
+        <div class="card-title"><span class="fr">Monitoring, logs &amp; SIEM</span><span class="en">Monitoring, logs &amp; SIEM</span></div>
+        <p class="card-text">
+          <span class="fr">Centralisation de journaux, supervision réseau et enrichissement des alertes. Expérimentation d'analyses assistées par IA pour détecter anomalies et corrélations.</span>
+          <span class="en">Log centralization, network monitoring and alert enrichment. Experimenting with AI-assisted analysis to detect anomalies and correlations.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 06 PROJETS ================= -->
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">06</span></div>
+    <h2 class="sec-title"><span class="fr">Projets techniques</span><span class="en">Technical projects</span></h2>
+    <div class="grid3">
+      <div class="card">
+        <div class="card-ico">📶</div>
+        <div class="card-sub"><span class="fr">Télécoms</span><span class="en">Telecom</span></div>
+        <div class="card-title"><span class="fr">Analyse spectrale WiFi &amp; Mobile</span><span class="en">WiFi &amp; mobile spectrum analysis</span></div>
+        <p class="card-text">
+          <span class="fr">Étude de spectres WiFi et mobiles, mesure d'atténuation et caractérisation d'antennes en environnement réel. Détection d'interférences et optimisation de couverture.</span>
+          <span class="en">WiFi and mobile spectrum study, attenuation measurement and antenna characterization in real environments. Interference detection and coverage optimization.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🥷</div>
+        <div class="card-sub"><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></div>
+        <div class="card-title">Lab Pentest — Kali Linux</div>
+        <p class="card-text">
+          <span class="fr">Environnement offensif isolé pour tester des techniques d'intrusion, analyser les vecteurs d'attaque et traduire les résultats en mesures défensives concrètes.</span>
+          <span class="en">Isolated offensive environment to test intrusion techniques, analyze attack vectors and turn findings into concrete defensive measures.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🔥</div>
+        <div class="card-sub"><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></div>
+        <div class="card-title">Firewall pfSense / OPNsense</div>
+        <p class="card-text">
+          <span class="fr">Déploiement d'un pare-feu open-source avec règles de filtrage avancées, segmentation réseau, IDS/IPS et monitoring du trafic en temps réel.</span>
+          <span class="en">Open-source firewall deployment with advanced filtering rules, network segmentation, IDS/IPS and real-time traffic monitoring.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🔐</div>
+        <div class="card-sub"><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></div>
+        <div class="card-title"><span class="fr">VPN sécurisé WireGuard</span><span class="en">Secure WireGuard VPN</span></div>
+        <p class="card-text">
+          <span class="fr">Tunnel VPN chiffré pour accès distant sécurisé, gestion des clés cryptographiques et routage sélectif des flux réseau.</span>
+          <span class="en">Encrypted VPN tunnel for secure remote access, cryptographic key management and selective traffic routing.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🌐</div>
+        <div class="card-sub">Infrastructure</div>
+        <div class="card-title"><span class="fr">Serveur web sécurisé — Nginx</span><span class="en">Hardened web server — Nginx</span></div>
+        <p class="card-text">
+          <span class="fr">Hébergement avec Nginx, TLS, reverse proxy et hardening complet des headers HTTP de sécurité.</span>
+          <span class="en">Hosting with Nginx, TLS, reverse proxy and full hardening of HTTP security headers.</span>
+        </p>
+      </div>
+      <div class="card">
+        <div class="card-ico">🤖</div>
+        <div class="card-sub"><span class="fr">IA appliquée</span><span class="en">Applied AI</span></div>
+        <div class="card-title"><span class="fr">Détection d'anomalies réseau par IA</span><span class="en">AI-assisted network anomaly detection</span></div>
+        <p class="card-text">
+          <span class="fr">Analyse de logs et métriques réseau pour repérer des écarts de comportement, prioriser les événements utiles et automatiser le tri SOC de premier niveau.</span>
+          <span class="en">Network log and metric analysis to spot behavioral deviations, prioritize relevant events and automate first-level SOC triage.</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= 07 FORMATION ================= -->
+<section id="formation">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">07</span></div>
+    <h2 class="sec-title"><span class="fr">Formation</span><span class="en">Education</span></h2>
+    <div class="edu-list">
+
+      <div class="edu-row featured">
+        <div class="edu-when">
+          <span class="fr">Sept. 2026 — 2029<br>En alternance</span>
+          <span class="en">Sept. 2026 — 2029<br>Apprenticeship</span>
+        </div>
+        <div>
+          <div class="edu-degree">
+            <span class="fr">Cycle Ingénieur — Électronique &amp; Informatique, Systèmes Communicants</span>
+            <span class="en">Engineering degree — Electronics &amp; Computer Science, Communicating Systems</span>
+            <span class="badge-adm"><span class="fr">ADMIS</span><span class="en">ADMITTED</span></span>
+          </div>
+          <div class="edu-school">ESIEE Paris · Noisy-le-Grand</div>
+          <div class="edu-note">
+            <span class="fr">Formation habilitée CTI : électronique, RF &amp; transmission sans fil, systèmes embarqués, développement logiciel et traitement du signal. Recherche d'une entreprise partenaire pour l'alternance de 3 ans.</span>
+            <span class="en">CTI-accredited program: electronics, RF &amp; wireless transmission, embedded systems, software development and signal processing. Currently looking for a host company for the 3-year apprenticeship.</span>
           </div>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
-
-<!-- LAB -->
-<section id="lab" class="section-w lab-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">04</span>
-      <h2 class="section-title">Lab &amp; Expérimentations</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="proj-grid">
-
-      <div class="proj-card pc-tel">
-        <div class="proj-top"><div class="proj-ico">📡</div><span class="proj-badge pb-tel">5G SA</span></div>
-        <div class="proj-title">OpenAirInterface — gNB, UE &amp; Core</div>
-        <div class="proj-desc">Montage expérimental autour d'une architecture 5G Standalone avec gNB, UE et Core. Objectif : comprendre les interfaces radio/core, observer les flux et valider les scénarios d'attachement.</div>
-      </div>
-
-      <div class="proj-card pc-cyber">
-        <div class="proj-top"><div class="proj-ico">🛡️</div><span class="proj-badge pb-cyber">Attack/Defense</span></div>
-        <div class="proj-title">Environnements cybersécurité isolés</div>
-        <div class="proj-desc">Labs dédiés à l'analyse de chaînes d'attaque, à la défense active et à la production de détections exploitables. Approche centrée sur la compréhension des traces et des comportements adverses.</div>
-      </div>
-
-      <div class="proj-card pc-infra">
-        <div class="proj-top"><div class="proj-ico">🧱</div><span class="proj-badge pb-infra">Infra</span></div>
-        <div class="proj-title">Infrastructure virtualisée Proxmox</div>
-        <div class="proj-desc">Virtualisation d'environnements réseau avec VLAN, routage, segmentation et services internes. Le lab sert à tester des architectures reproductibles avant passage en contexte réel.</div>
-      </div>
-
-      <div class="proj-card pc-ai">
-        <div class="proj-top"><div class="proj-ico">📈</div><span class="proj-badge pb-ai">Monitoring</span></div>
-        <div class="proj-title">Monitoring, logs &amp; SIEM</div>
-        <div class="proj-desc">Centralisation de journaux, supervision réseau et enrichissement des alertes pour accélérer le diagnostic. Expérimentation d'analyses assistées par IA pour détecter anomalies et corrélations.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- PROJETS -->
-<section id="projects" class="section-w projects-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">05</span>
-      <h2 class="section-title">Projets techniques</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="proj-grid">
-
-      <div class="proj-card pc-tel">
-        <div class="proj-top"><div class="proj-ico">📶</div><span class="proj-badge pb-tel">Télécoms</span></div>
-        <div class="proj-title">Analyse spectrale WiFi &amp; Mobile</div>
-        <div class="proj-desc">Étude de spectres WiFi et mobiles, mesure d'atténuation et caractérisation d'antennes en environnement réel. Détection d'interférences et optimisation de couverture.</div>
-      </div>
-
-      <div class="proj-card pc-cyber">
-        <div class="proj-top"><div class="proj-ico">🥷</div><span class="proj-badge pb-cyber">Cybersécurité</span></div>
-        <div class="proj-title">Lab Pentest — Kali Linux</div>
-        <div class="proj-desc">Environnement offensif isolé pour tester des techniques d'intrusion, analyser les vecteurs d'attaque et traduire les résultats en mesures défensives concrètes.</div>
-      </div>
-
-      <div class="proj-card pc-cyber">
-        <div class="proj-top"><div class="proj-ico">🔥</div><span class="proj-badge pb-cyber">Cybersécurité</span></div>
-        <div class="proj-title">Firewall pfSense / OPNsense</div>
-        <div class="proj-desc">Déploiement d'un pare-feu open-source avec règles de filtrage avancées, segmentation réseau, IDS/IPS et monitoring du trafic en temps réel.</div>
-      </div>
-
-      <div class="proj-card pc-cyber">
-        <div class="proj-top"><div class="proj-ico">🔐</div><span class="proj-badge pb-cyber">Cybersécurité</span></div>
-        <div class="proj-title">VPN Sécurisé WireGuard</div>
-        <div class="proj-desc">Tunnel VPN chiffré pour accès distant sécurisé, gestion des clés cryptographiques et routage sélectif des flux réseau.</div>
-      </div>
-
-      <div class="proj-card pc-infra">
-        <div class="proj-top"><div class="proj-ico">🌐</div><span class="proj-badge pb-infra">Infrastructure</span></div>
-        <div class="proj-title">Serveur Web Sécurisé — Nginx</div>
-        <div class="proj-desc">Hébergement avec Nginx, TLS, reverse proxy et hardening complet des headers HTTP de sécurité.</div>
-      </div>
-
-      <div class="proj-card pc-ai">
-        <div class="proj-top"><div class="proj-ico">🤖</div><span class="proj-badge pb-ai">IA appliquée</span></div>
-        <div class="proj-title">Détection d'anomalies réseau assistée par IA</div>
-        <div class="proj-desc">Analyse de logs et métriques réseau pour repérer des écarts de comportement, prioriser les événements utiles et automatiser des premiers niveaux de tri SOC.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FORMATION -->
-<section id="education" class="section-w edu-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">06</span>
-      <h2 class="section-title">Formation</h2>
-      <div class="section-rule"></div>
-    </div>
-    <div class="edu-list">
       <div class="edu-row">
-        <div class="edu-when">Depuis sept. 2023<br>En cours</div>
+        <div class="edu-when"><span class="fr">Depuis sept. 2023<br>3ème année — en cours</span><span class="en">Since Sept. 2023<br>3rd year — ongoing</span></div>
         <div>
-          <div class="edu-degree">BUT Réseaux &amp; Télécommunications</div>
+          <div class="edu-degree"><span class="fr">BUT Réseaux &amp; Télécommunications</span><span class="en">BUT in Networks &amp; Telecommunications</span></div>
           <div class="edu-school">UPEC — IUT Créteil-Vitry</div>
-          <div class="edu-note">Spécialité cybersécurité · 3ème année</div>
+          <div class="edu-note"><span class="fr">Spécialité cybersécurité</span><span class="en">Cybersecurity track</span></div>
         </div>
       </div>
+
       <div class="edu-row">
         <div class="edu-when">Sept. 2022 — Juil. 2023</div>
         <div>
-          <div class="edu-degree">CPGE TSI — Technologie &amp; Sciences Industrielles</div>
-          <div class="edu-school">Lycée Benjamin Franklin · Orléans</div>
-          <div class="edu-note">1ère année</div>
+          <div class="edu-degree"><span class="fr">CPGE TSI — Technologie &amp; Sciences Industrielles</span><span class="en">CPGE TSI — Technology &amp; Industrial Sciences (preparatory class)</span></div>
+          <div class="edu-school"><span class="fr">Lycée Benjamin Franklin · Orléans</span><span class="en">Lycée Benjamin Franklin · Orléans</span></div>
+          <div class="edu-note"><span class="fr">1ère année</span><span class="en">1st year</span></div>
         </div>
       </div>
+
       <div class="edu-row">
         <div class="edu-when">Sept. 2019 — Juin 2022</div>
         <div>
-          <div class="edu-degree">Bac STI2D — Systèmes d'information &amp; numérique</div>
-          <div class="edu-school">Lycée Duhamel du Monceau · Pithiviers</div>
-          <div class="edu-note">Mention Assez Bien</div>
+          <div class="edu-degree"><span class="fr">Bac STI2D — Systèmes d'information &amp; numérique</span><span class="en">STI2D high school diploma — Information systems &amp; digital technology</span></div>
+          <div class="edu-school"><span class="fr">Lycée Duhamel du Monceau · Pithiviers</span><span class="en">Lycée Duhamel du Monceau · Pithiviers</span></div>
+          <div class="edu-note"><span class="fr">Mention Assez Bien</span><span class="en">With honors</span></div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- PROFIL -->
-<section id="about" class="section-w about-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">07</span>
-      <h2 class="section-title">Profil</h2>
-      <div class="section-rule"></div>
-    </div>
+<!-- ================= 08 PROFIL ================= -->
+<section id="about">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">08</span></div>
+    <h2 class="sec-title"><span class="fr">Profil</span><span class="en">Profile</span></h2>
     <div class="about-grid">
       <div class="about-card">
-        <div class="about-card-title">Langues</div>
+        <div class="about-card-title"><span class="fr">Langues</span><span class="en">Languages</span></div>
         <ul class="about-list">
-          <li>Français <span>Langue maternelle</span></li>
-          <li>Anglais <span>Professionnel · C1</span></li>
-          <li>Tamoul <span>Courant</span></li>
+          <li><b><span class="fr">Français</span><span class="en">French</span></b> <span class="lv"><span class="fr">Langue maternelle</span><span class="en">Native</span></span></li>
+          <li><b><span class="fr">Anglais</span><span class="en">English</span></b> <span class="lv"><span class="fr">Professionnel · C1</span><span class="en">Professional · C1</span></span></li>
+          <li><b><span class="fr">Tamoul</span><span class="en">Tamil</span></b> <span class="lv"><span class="fr">Courant</span><span class="en">Fluent</span></span></li>
         </ul>
       </div>
       <div class="about-card">
-        <div class="about-card-title">Qualités</div>
+        <div class="about-card-title"><span class="fr">Qualités</span><span class="en">Strengths</span></div>
         <ul class="about-list">
-          <li>Rigueur &amp; esprit d'analyse</li>
-          <li>Curiosité technique</li>
-          <li>Capacité d'adaptation</li>
-          <li>Travail en équipe</li>
-          <li>Autonomie en lab</li>
+          <li><span class="fr">Rigueur &amp; esprit d'analyse</span><span class="en">Rigor &amp; analytical mindset</span></li>
+          <li><span class="fr">Curiosité technique</span><span class="en">Technical curiosity</span></li>
+          <li><span class="fr">Capacité d'adaptation</span><span class="en">Adaptability</span></li>
+          <li><span class="fr">Travail en équipe</span><span class="en">Teamwork</span></li>
+          <li><span class="fr">Autonomie en lab</span><span class="en">Lab autonomy</span></li>
         </ul>
       </div>
       <div class="about-card">
-        <div class="about-card-title">Intérêts</div>
+        <div class="about-card-title"><span class="fr">Intérêts</span><span class="en">Interests</span></div>
         <ul class="about-list">
-          <li>Homelab réseau &amp; sécurité</li>
-          <li>Radiofréquences &amp; télécoms</li>
-          <li>Réparation smartphones &amp; PC</li>
-          <li>Veille technologique</li>
-          <li>Éco-délégué</li>
-          <li>Curiosité des cultures</li>
+          <li><span class="fr">Radiofréquences &amp; télécoms</span><span class="en">Radio frequencies &amp; telecom</span></li>
+          <li><span class="fr">Homelab réseau &amp; sécurité</span><span class="en">Network &amp; security homelab</span></li>
+          <li><span class="fr">Réparation smartphones &amp; PC</span><span class="en">Smartphone &amp; PC repair</span></li>
+          <li><span class="fr">Veille technologique</span><span class="en">Tech watch</span></li>
+          <li><span class="fr">Éco-délégué</span><span class="en">Eco-delegate</span></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section-w contact-section">
-  <div class="section-i">
-    <div class="section-h">
-      <span class="section-num">08</span>
-      <h2 class="section-title">Contact</h2>
-      <div class="section-rule"></div>
-    </div>
+<!-- ================= 09 CONTACT ================= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">09</span></div>
+    <h2 class="sec-title">
+      <span class="fr">Disponible dès <em>septembre 2026</em></span>
+      <span class="en">Available from <em>September 2026</em></span>
+    </h2>
     <div class="contact-layout">
-      <div class="contact-left">
-        <h2>Disponible dès<br><em>septembre 2026</em></h2>
-        <p>Je recherche une alternance de 3 ans en école d'ingénieur sur des sujets d'ingénierie réseaux, SOC/SIEM, télécoms 5G/RF ou IA appliquée à la cybersécurité. Disponible pour échanger sur des environnements techniques exigeants.</p>
+      <div>
+        <p class="sec-desc" style="margin-bottom:1.2rem">
+          <span class="fr">Je recherche une alternance de 3 ans en cycle ingénieur ESIEE Paris, sur des sujets d'électronique, systèmes embarqués, télécoms 5G/RF, réseaux ou cybersécurité. Disponible pour échanger sur des environnements techniques exigeants.</span>
+          <span class="en">I am looking for a 3-year apprenticeship alongside the ESIEE Paris engineering program, in electronics, embedded systems, 5G/RF telecom, networks or cybersecurity. Happy to discuss demanding technical environments.</span>
+        </p>
+        <div class="tags">
+          <span class="st y"><span class="fr">Électronique &amp; embarqué</span><span class="en">Electronics &amp; embedded</span></span>
+          <span class="st b"><span class="fr">Télécoms 5G / RF</span><span class="en">5G / RF telecom</span></span>
+          <span class="st g"><span class="fr">Réseaux</span><span class="en">Networks</span></span>
+          <span class="st p"><span class="fr">Cybersécurité</span><span class="en">Cybersecurity</span></span>
+        </div>
       </div>
       <div class="contact-links">
-        <a href="mailto:janushann@outlook.fr" class="contact-link">
-          <div class="cl-ico">✉️</div>
-          <div><div class="cl-label">Email</div><div class="cl-val">janushann@outlook.fr</div></div>
+        <a class="contact-link" href="mailto:janushann@outlook.fr">
+          <span class="cl-ico">✉️</span>
+          <span>
+            <span class="cl-label">Email</span><br>
+            <span class="cl-val">janushann@outlook.fr</span>
+          </span>
         </a>
-        <a href="tel:+33768039481" class="contact-link">
-          <div class="cl-ico">📱</div>
-          <div><div class="cl-label">Téléphone</div><div class="cl-val">07 68 03 94 81</div></div>
-        </a>
-        <a href="https://www.linkedin.com/in/janushann-thamilalakan-14850a293" target="_blank" class="contact-link">
-          <div class="cl-ico">💼</div>
-          <div><div class="cl-label">LinkedIn</div><div class="cl-val">Janushann Thamilalakan</div></div>
+        <a class="contact-link" href="https://www.linkedin.com/in/janushann-thamilalakan-14850a293" target="_blank" rel="noopener">
+          <span class="cl-ico">💼</span>
+          <span>
+            <span class="cl-label">LinkedIn</span><br>
+            <span class="cl-val">Janushann Thamilalakan</span>
+          </span>
         </a>
         <div class="contact-link" style="cursor:default">
-          <div class="cl-ico">📍</div>
-          <div><div class="cl-label">Localisation</div><div class="cl-val">Créteil (94) — Île-de-France</div></div>
+          <span class="cl-ico">📍</span>
+          <span>
+            <span class="cl-label"><span class="fr">Localisation</span><span class="en">Location</span></span><br>
+            <span class="cl-val"><span class="fr">Créteil (94) — Île-de-France</span><span class="en">Créteil (94) — Paris region</span></span>
+          </span>
         </div>
       </div>
     </div>
@@ -937,21 +924,31 @@ footer {
 </section>
 
 <footer>
-  <span>© 2026 Janushann Thamilalakan</span>
-  <span>Réseaux avancés · Cybersécurité · Télécoms · IA appliquée</span>
+  <div class="foot-in">
+    <span>© 2026 Janushann Thamilalakan</span>
+    <span>
+      <span class="fr">Électronique &amp; Systèmes Communicants · Télécoms · Réseaux · Cybersécurité</span>
+      <span class="en">Electronics &amp; Communicating Systems · Telecom · Networks · Cybersecurity</span>
+    </span>
+  </div>
 </footer>
 
 <script>
-  // Scroll reveal for XP rows
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach((e, i) => {
-      if (e.isIntersecting) {
-        setTimeout(() => e.target.classList.add('vis'), i * 80);
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.08 });
-  document.querySelectorAll('.xp-row').forEach(el => obs.observe(el));
+(function(){
+  var btn = document.getElementById('langToggle');
+  var saved = null;
+  try { saved = localStorage.getItem('lang'); } catch(e) {}
+  if (saved === 'en' || saved === 'fr') {
+    document.body.setAttribute('data-lang', saved);
+    document.documentElement.lang = saved;
+  }
+  btn.addEventListener('click', function(){
+    var next = document.body.getAttribute('data-lang') === 'fr' ? 'en' : 'fr';
+    document.body.setAttribute('data-lang', next);
+    document.documentElement.lang = next;
+    try { localStorage.setItem('lang', next); } catch(e) {}
+  });
+})();
 </script>
 </body>
 </html>
